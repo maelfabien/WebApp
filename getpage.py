@@ -101,7 +101,7 @@ def randomSearch(page):
                 
                 hrefs = get_links(getRawPage(page)[1])
                 hrefs = [correct_txt(h) for h in hrefs]
-                #hrefs = principal(hrefs)
+                hrefs = principal(hrefs)
                 hrefs = list(OrderedDict.fromkeys(hrefs))[0]
 
                 cache[page] = hrefs
@@ -135,7 +135,7 @@ def getPage(page):
         hrefs = [correct_txt(h) for h in hrefs]
         
         # 4.4
-        #hrefs = principal(hrefs)
+        hrefs = principal(hrefs)
         
         # 4.3
         hrefs = list(OrderedDict.fromkeys(hrefs))
