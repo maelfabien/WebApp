@@ -88,7 +88,8 @@ def randomSearch(page):
 
     count = 0
     path = []
-    hrefs_1 = hrefs
+    hrefs_1 = []
+    hrefs_1.append(hrefs[0])
     
     try :
 
@@ -101,6 +102,8 @@ def randomSearch(page):
                 path.append(page)
                 hrefs = cache.get(page)
                 page = getRawPage(hrefs)[0]
+                
+                hrefs_1.append(hrefs[0])
 
                 count += 1
             
@@ -115,14 +118,14 @@ def randomSearch(page):
                     hrefs = [hrefs]
             
                 # Avoid Loops
-                if hrefs[0] == hrefs_1[0] :
+                if hrefs_1[-1] == hrefs_1[-3] :
                     ind = np.random.randint(len(hrefs))
                 
                 hrefs = [correct_txt(h) for h in hrefs]
                 hrefs = principal(hrefs)
                 hrefs = list(OrderedDict.fromkeys(hrefs))[ind]
                 
-                hrefs_1 = hrefs
+                hrefs_1.append(hrefs[0])
                 
                 cache[page] = hrefs
                 page = getRawPage(hrefs)[0]
