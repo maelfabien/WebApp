@@ -103,7 +103,7 @@ def randomSearch(page):
                 hrefs = cache.get(page)
                 page = getRawPage(hrefs)[0]
                 
-                hrefs_1.append(hrefs[0])
+                hrefs_1.append(hrefs)
 
                 count += 1
             
@@ -125,7 +125,7 @@ def randomSearch(page):
                 hrefs = principal(hrefs)
                 hrefs = list(OrderedDict.fromkeys(hrefs))[ind]
                 
-                hrefs_1.append(hrefs[0])
+                hrefs_1.append(hrefs)
                 
                 cache[page] = hrefs
                 page = getRawPage(hrefs)[0]
