@@ -46,15 +46,15 @@ def game() :
             d.write(str(str(session['article']) + ',' + str(session['score']) + ',' + 'False')+'\n')
             d.close()
             
-        flash("C'est gagné! Votre score est de : " + str(session['score']), "Won")
+        flash("You won ! Your score is : " + str(session['score']), "Won")
         return redirect('/')
         
     if session['title'] == None :
-        flash("Perdu... La page demandée n'existe pas.", "Lost")
+        flash("The desired page does not exist.", "Lost")
         return redirect('/')
 
     if session['hrefs'] == [] :
-        flash("Perdu... La page demandée n'a pas de liens.", "Lost")
+        flash("The desired page has no hyper-links.", "Lost")
         return redirect('/')
         
     else :
@@ -66,10 +66,10 @@ def autogame() :
     
     session['score_auto'], session['path_auto'] = randomSearch(session['article'])
     if session['score_auto'] == None :
-        flash("Perdu... La page demandée n'existe pas", "Lost")
+        flash("The desired page does not exist.", "Lost")
     else :
-        flash("La page a été trouvée en : " + str(session['score_auto']) + " étapes.", "Won")
-        flash("La chemin trouvé est : " + ', '.join([str(s) for s in (session['path_auto'])]), "Won")
+        flash("The desired page was found in : " + str(session['score_auto']) + " steps.", "Won")
+        flash("The chosen path is : " + ', '.join([str(s) for s in (session['path_auto'])]), "Won")
     
     with open("score.txt", "a") as d:
         d.write(str(str(session['article']) + ',' + str(session['score_auto']) + ',' + 'True')+'\n')
@@ -84,7 +84,7 @@ def move() :
         session['article'] = request.form['destination']
         return redirect('/game')
     else :
-        flash("Vous jouez sur plusieurs onglets.", "Lost")
+        flash("You have several tabs opened.", "Lost")
         return redirect('/')
 
 

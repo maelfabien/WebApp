@@ -12,7 +12,7 @@
       <img src = "/static/wikipedia_logo.png" width="300">
     </a>
     <br>
-    <i style="font-family: 'Times New Roman'"> Tous les chemins mènent à la philosophie</i>
+    <i style="font-family: 'Times New Roman'"> All roads lead to Philosophy</i>
 
     <br>
     <br>
@@ -25,15 +25,15 @@
       {# Début du bloc "body", dont vous devez modifier le contenu #}
       <p>{{ message }}</p>
 
-      <p style="font-size: 1.5em"> Jouez manuellement, ou lancez l'algorithme : </p>
+      <p style="font-size: 1.5em"> Play manually, or start the algorithm : </p>
       <form action="/newgame" method="post">
         <!-- contenu du formulaire ici --> 
         
         <input type="text" id="bar" name="start" placeholder="Rentrez votre mot de départ !"></input>
 
         <br>
-        <input type="submit" name="start" value="Manuel"> 
-        <input type="submit" name="start_auto" value="Automatique">
+        <input type="submit" name="start" value="Manual"> 
+        <input type="submit" name="start_auto" value="Automatic">
 
       </form>
       <br>
@@ -55,11 +55,11 @@
     {% endwith %}
 
     <form action="/tuto" >
-      <input class="but" type="submit" action="/tuto" value="Règles du jeu">
+      <input class="but" type="submit" action="/tuto" value="Rules">
     </form>
     <br>
     <form action="/histo">
-      <input class="but" type="submit" value="Historique des scores">
+      <input class="but" type="submit" value="Score History">
     </form>
 
   </body>

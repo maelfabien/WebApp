@@ -19,7 +19,7 @@ def getJSON(page):
       'redirects': 'true',  # TODO: compléter ceci
       'prop' : 'text',
       'page': page})
-    API = "https://fr.wikipedia.org/w/api.php"  # TODO: changer ceci
+    API = "https://en.wikipedia.org/w/api.php"  # TODO: changer ceci
     # désactivation de la vérification SSL pour contourner un problème sur le
     # serveur d'évaluation -- ne pas modifier
     gcontext = ssl.SSLContext()
@@ -109,7 +109,7 @@ def randomSearch(page):
                 
                 count += 1
         
-        path.append("Philosophie")
+        path.append("Philosophy")
         
         return count, path
 

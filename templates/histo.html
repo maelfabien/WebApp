@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/static/style.css">
-    <title>Tutoriel</title>
+    <title>Tutorial</title>
 
   </head>
   <body>
@@ -11,12 +11,12 @@
   <br>
   <img src = "/static/wikipedia_logo.png" width="300">
   <br>
-  <i style="font-family: 'Times New Roman'"> Tous les chemins mènent à la philosophie</i>
+  <i style="font-family: 'Times New Roman'"> All roads lead to Philosophy</i>
   <br>
 
   {% block body %}
 
-  <p style="font-size: 1.5em"> Historique des scores </p>
+  <p style="font-size: 1.5em"> Scores History </p>
     <table align="center">
     {% for table in tables %}
         {{titles[loop.index]}}
