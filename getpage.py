@@ -76,19 +76,32 @@ def principal(s) :
             lst.append(word)
     return lst
 
+def get_clear_links(page):
+    
+    hrefs = get_links(getRawPage(page)[1])
+    
+    if isinstance(hrefs, str) :
+        hrefs = [hrefs]
+            
+    hrefs = [correct_txt(h) for h in hrefs]
+    hrefs = principal(hrefs)
+            
+    return list(OrderedDict.fromkeys(hrefs))
 
 def randomSearch(page):
     
     init_page = page
     page = correct_txt(page)
-
+    
+    hrefs = get_clear_links(page)[0]
     count = 0
+    
     path = []
     hrefs_1 = []
     
     try :
 
-        while not 'Philosophy' in hrefs and count < 30 :
+        while not 'Philosophy' in hrefs or count < 30 :
             
             ind = 0
             print(hrefs_1)
@@ -98,8 +111,6 @@ def randomSearch(page):
                 path.append(page)
                 hrefs = cache.get(page)
                 page = getRawPage(hrefs)[0]
-                
-                hrefs_1.append(hrefs)
 
                 count += 1
             
@@ -108,24 +119,16 @@ def randomSearch(page):
                 page = correct_txt(page)
                 path.append(page)
                 
-                hrefs = get_links(getRawPage(page)[1])
-                
-                if isinstance(hrefs, str) :
-                    hrefs = [hrefs]
-                
-                hrefs = [correct_txt(h) for h in hrefs]
-                hrefs = principal(hrefs)
-                
-                hrefs = list(OrderedDict.fromkeys(hrefs))[ind]
-                
-                hrefs_1.append(hrefs)
-                
+                hrefs = get_clear_links(page)[0]
+
                 cache[page] = hrefs
                 page = getRawPage(hrefs)[0]
 
                 print(count)
                 count += 1
 
+            hrefs_1.append(hrefs)
+                
         path.append("Philosophy")
         
         return count, path
