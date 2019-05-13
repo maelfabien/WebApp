@@ -123,7 +123,7 @@ def randomSearch(page):
 
     except :
         
-        return None, None
+        return None, path
 
 
 def getPage(page):

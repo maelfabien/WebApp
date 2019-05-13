@@ -66,8 +66,10 @@ def game() :
 def autogame() :
     
     session['score_auto'], session['path_auto'] = randomSearch(session['article'])
+
     if session['score_auto'] == None :
         flash("The desired page " + session['article'] + " does not exist.", "Lost")
+        flash("The chosen path is : " + ', '.join([str(s) for s in (session['path_auto'])]), "Won")
     elif session['score_auto'] > 75 :
         flash("Page not found in 75 steps.", "Lost")
     else :
