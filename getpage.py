@@ -81,19 +81,14 @@ def randomSearch(page):
     
     init_page = page
     page = correct_txt(page)
-    hrefs = get_links(getRawPage(page)[1])
-
-    if isinstance(hrefs, str) :
-        hrefs = [hrefs]
 
     count = 0
     path = []
     hrefs_1 = []
-    hrefs_1.append(hrefs[0])
     
     try :
 
-        while not 'Philosophy' in hrefs :
+        while not 'Philosophy' in hrefs and count < 30 :
             
             ind = 0
             print(hrefs_1)
@@ -127,9 +122,10 @@ def randomSearch(page):
                 
                 cache[page] = hrefs
                 page = getRawPage(hrefs)[0]
-                
+
+                print(count)
                 count += 1
-        
+
         path.append("Philosophy")
         
         return count, path
