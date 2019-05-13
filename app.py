@@ -41,7 +41,7 @@ def newgame() :
 def game() :
     session['title'], session['hrefs'] = getPage(session['article'])
     
-    if session['title'] == 'Philosophie' :
+    if session['title'] == 'Philosophy' :
         with open("score.txt", "a") as d:
             d.write(str(str(session['article']) + ',' + str(session['score']) + ',' + 'False')+'\n')
             d.close()

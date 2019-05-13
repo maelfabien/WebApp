@@ -6,7 +6,7 @@
 			<h1 style="font-size: 3.5em"> {{title}} </h1>
 		</div>
     	<div class="column" id="right-col">
-    		<p> Vers quelle page souhaitez-vous être redirigé ? </p>
+    		<p> Where would you like to be redirected ? </p>
 			<form action="/move" type='hidden' method="post" id="myform">
 		
 				{% for item in hrefs %}
@@ -32,7 +32,7 @@
 
 <hr>
 
-<p> Votre score actuel est : 
+<p> Your current score is : 
 	<p style="font-size: 3em">
 		<strong> 
 			{{ session['score'] - 1}} 
