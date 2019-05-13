@@ -119,9 +119,9 @@ def randomSearch(page):
                     hrefs = [hrefs]
             
                 # Avoid Loops
-                if hrefs_1[-1] == hrefs_1[-3] :
-                    
-                    ind = np.random.randint(len(hrefs))
+                if len(hrefs_1) > 4 :
+                    if hrefs_1[-1] == hrefs_1[-3] :
+                        ind = np.random.randint(len(hrefs))
                 
                 hrefs = [correct_txt(h) for h in hrefs]
                 hrefs = principal(hrefs)
