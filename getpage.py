@@ -107,7 +107,7 @@ def randomSearch(page):
             print(hrefs_1)
             
             
-            if hrefs_1[-1] == hrefs_1[-3] :
+            if hrefs_1[-1] == hrefs_1[-3] and len(hrefs_1) > 4 :
                 ind = np.random.randint(ind_len)
             
             if page in cache.keys() :
