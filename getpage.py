@@ -104,12 +104,12 @@ def randomSearch(page):
         while not 'Philosophy' in hrefs :
             
             ind = 0
-            print(hrefs_1)
-            
             
             if len(hrefs_1) > 4 :
                 if hrefs_1[-1] == hrefs_1[-3] :
                     ind = np.random.randint(ind_len)
+        
+            print(ind)
             
             if page in cache.keys() :
                 
@@ -134,7 +134,9 @@ def randomSearch(page):
                 ind_len = len(get_clear_links(hrefs))
 
                 count += 1
-
+            
+            print(ind_len)
+            
             hrefs_1.append(hrefs)
                 
         path.append("Philosophy")
