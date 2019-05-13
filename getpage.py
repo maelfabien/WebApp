@@ -117,16 +117,18 @@ def randomSearch(page):
                 
                 if isinstance(hrefs, str) :
                     hrefs = [hrefs]
-            
-                # Avoid Loops
-                if len(hrefs_1) > 4 :
-                    if hrefs_1[-1] == hrefs_1[-3] :
-                        print(true)
-                        ind = np.random.randint(len(hrefs))
-                        print(ind)
                 
                 hrefs = [correct_txt(h) for h in hrefs]
                 hrefs = principal(hrefs)
+                
+                # Avoid Loops
+                if len(hrefs_1) > 4 :
+                    if hrefs_1[-2] == hrefs[0] :
+                        ind = np.random.randint(len(hrefs))
+                        print(ind)
+                print(hrefs_1[-2])
+                print(hrefs[0])
+                
                 hrefs = list(OrderedDict.fromkeys(hrefs))[ind]
                 
                 hrefs_1.append(hrefs)
