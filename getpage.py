@@ -8,6 +8,7 @@ from urllib.parse import urlencode, unquote
 import ssl
 from collections import OrderedDict
 import shelve
+import numpy as np
 
 global cache
 cache = dict()
@@ -87,12 +88,16 @@ def randomSearch(page):
 
     count = 0
     path = []
+    hrefs_1 = hrefs
     
     try :
 
         while not 'Philosophy' in hrefs :
-
+            
+            ind = 0
+            
             if page in cache.keys() :
+                
                 path.append(page)
                 hrefs = cache.get(page)
                 page = getRawPage(hrefs)[0]
@@ -108,10 +113,17 @@ def randomSearch(page):
                 
                 if isinstance(hrefs, str) :
                     hrefs = [hrefs]
+            
+                # Avoid Loops
+                if hrefs[0] == hrefs_1[0] :
+                    ind = np.random.randint(len(hrefs))
+                
                 hrefs = [correct_txt(h) for h in hrefs]
                 hrefs = principal(hrefs)
-                hrefs = list(OrderedDict.fromkeys(hrefs))[0]
-
+                hrefs = list(OrderedDict.fromkeys(hrefs))[ind]
+                
+                hrefs_1 = hrefs
+                
                 cache[page] = hrefs
                 page = getRawPage(hrefs)[0]
                 

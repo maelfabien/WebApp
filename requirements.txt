@@ -3,3 +3,4 @@ Gunicorn
 Werkzeug
 bs4
 pandas
+numpy
