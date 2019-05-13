@@ -122,7 +122,7 @@ def randomSearch(page):
                 hrefs = principal(hrefs)
                 
                 print(hrefs_1[-2])
-                print(hrefs[0])
+                print(hrefs)
                 
                 # Avoid Loops
                 if len(hrefs_1) > 4 :
