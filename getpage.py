@@ -80,12 +80,13 @@ def randomSearch(page):
     
     init_page = page
     page = correct_txt(page)
+    hrefs = cache.get(page)
     count = 0
     path = []
     
     try :
 
-        while page != 'Philosophie' :
+        while not 'Philosophy' in hrefs :
 
             if page in cache.keys() :
                 path.append(page)
