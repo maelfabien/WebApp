@@ -125,10 +125,10 @@ def randomSearch(page):
                 page = correct_txt(page)
                 path.append(page)
                 
-                hrefs = get_clear_links(page)
+                hrefs = get_clear_links(page)[ind]
 
                 cache[page] = hrefs
-                page = getRawPage(hrefs)[ind]
+                page = getRawPage(hrefs)[0]
 
                 ind_len = len(get_clear_links(hrefs))
 
