@@ -80,7 +80,11 @@ def randomSearch(page):
     
     init_page = page
     page = correct_txt(page)
-    hrefs = cache.get(page)
+    hrefs = get_links(getRawPage(page)[1])
+
+    if isinstance(hrefs, str) :
+        hrefs = [hrefs]
+
     count = 0
     path = []
     
@@ -101,6 +105,9 @@ def randomSearch(page):
                 path.append(page)
                 
                 hrefs = get_links(getRawPage(page)[1])
+                
+                if isinstance(hrefs, str) :
+                    hrefs = [hrefs]
                 hrefs = [correct_txt(h) for h in hrefs]
                 hrefs = principal(hrefs)
                 hrefs = list(OrderedDict.fromkeys(hrefs))[0]
