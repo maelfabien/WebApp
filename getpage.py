@@ -105,36 +105,47 @@ def randomSearch(page):
             
             ind = 0
             
-            if len(hrefs_1) > 4 :
-                if hrefs_1[-1] == hrefs_1[-3] :
-                    ind = np.random.random_integers(ind_len)
+            if len(hrefs_1) > 4 and hrefs_1[-1] == hrefs_1[-3]:
+                
+                ind = np.random.randint(ind_len)
         
-            print("Index" + str(ind))
-            if page in cache.keys() :
-                
-                path.append(page)
-                hrefs = cache.get(page)
-                page = getRawPage(hrefs)[0]
-                
-                ind_len = len(get_clear_links(hrefs))
-
-                count += 1
-            
-            else :
-            
                 page = correct_txt(page)
                 path.append(page)
-                
+                            
                 hrefs = get_clear_links(page)[ind]
-
+                            
                 cache[page] = hrefs
                 page = getRawPage(hrefs)[0]
-
+                            
                 ind_len = len(get_clear_links(hrefs))
-
+                            
                 count += 1
-            
-            print(ind_len)
+                    
+            else :
+
+                if page in cache.keys() :
+                    
+                    path.append(page)
+                    hrefs = cache.get(page)
+                    page = getRawPage(hrefs)[0]
+                    
+                    ind_len = len(get_clear_links(hrefs))
+
+                    count += 1
+                
+                else :
+                
+                    page = correct_txt(page)
+                    path.append(page)
+                    
+                    hrefs = get_clear_links(page)[ind]
+
+                    cache[page] = hrefs
+                    page = getRawPage(hrefs)[0]
+
+                    ind_len = len(get_clear_links(hrefs))
+
+                    count += 1
             
             hrefs_1.append(hrefs)
                 
