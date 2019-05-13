@@ -85,13 +85,8 @@ def autogame() :
 
 @app.route('/move', methods=['POST'])
 def move() :
-    if request.form['destination'] in session['hrefs'] :
-        session['article'] = request.form['destination']
-        return redirect('/game')
-    else :
-        flash("You have several tabs opened.", "Lost")
-        return redirect('/')
-
+    session['article'] = request.form['destination']
+    return redirect('/game')
 
 @app.route('/tuto')
 def tuto():
