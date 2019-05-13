@@ -101,14 +101,15 @@ def randomSearch(page):
     
     try :
 
-        while not 'Philosophy' in hrefs or count < 30 :
+        while not 'Philosophy' in hrefs :
             
             ind = 0
             print(hrefs_1)
             
             
-            if hrefs_1[-1] == hrefs_1[-3] and len(hrefs_1) > 4 :
-                ind = np.random.randint(ind_len)
+            if len(hrefs_1) > 4 :
+                if hrefs_1[-1] == hrefs_1[-3] :
+                    ind = np.random.randint(ind_len)
             
             if page in cache.keys() :
                 
