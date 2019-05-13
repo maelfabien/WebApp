@@ -121,15 +121,6 @@ def randomSearch(page):
                 hrefs = [correct_txt(h) for h in hrefs]
                 hrefs = principal(hrefs)
                 
-                print(hrefs_1[-2])
-                print(hrefs)
-                
-                # Avoid Loops
-                if len(hrefs_1) > 4 :
-                    if hrefs_1[-2] == hrefs[0] :
-                        ind = np.random.randint(len(hrefs))
-                        print(ind)
-                
                 hrefs = list(OrderedDict.fromkeys(hrefs))[ind]
                 
                 hrefs_1.append(hrefs)
