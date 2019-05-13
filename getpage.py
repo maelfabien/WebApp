@@ -96,6 +96,7 @@ def randomSearch(page):
         while not 'Philosophy' in hrefs :
             
             ind = 0
+            print(hrefs_1)
             
             if page in cache.keys() :
                 
@@ -119,6 +120,7 @@ def randomSearch(page):
             
                 # Avoid Loops
                 if hrefs_1[-1] == hrefs_1[-3] :
+                    
                     ind = np.random.randint(len(hrefs))
                 
                 hrefs = [correct_txt(h) for h in hrefs]
