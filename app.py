@@ -50,7 +50,7 @@ def game() :
         return redirect('/')
         
     if session['title'] == None :
-        flash("The desired page does not exist.", "Lost")
+        flash("The desired page " + session['article'] + " does not exist.", "Lost")
         return redirect('/')
 
     if session['hrefs'] == [] :
@@ -66,7 +66,7 @@ def autogame() :
     
     session['score_auto'], session['path_auto'] = randomSearch(session['article'])
     if session['score_auto'] == None :
-        flash("The desired page does not exist.", "Lost")
+        flash("The desired page " + session['article'] + " does not exist.", "Lost")
     elif session['score_auto'] > 75 :
         flash("Page not found in 75 steps.", "Lost")
     else :
