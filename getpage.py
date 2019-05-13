@@ -106,11 +106,17 @@ def randomSearch(page):
             ind = 0
             print(hrefs_1)
             
+            
+            if hrefs_1[-1] == hrefs_1[-3] :
+                ind = np.random.randint(ind_len)
+            
             if page in cache.keys() :
                 
                 path.append(page)
                 hrefs = cache.get(page)
                 page = getRawPage(hrefs)[0]
+                
+                ind_len = len(get_clear_links(hrefs))
 
                 count += 1
             
@@ -119,12 +125,13 @@ def randomSearch(page):
                 page = correct_txt(page)
                 path.append(page)
                 
-                hrefs = get_clear_links(page)[0]
+                hrefs = get_clear_links(page)
 
                 cache[page] = hrefs
-                page = getRawPage(hrefs)[0]
+                page = getRawPage(hrefs)[ind]
 
-                print(count)
+                ind_len = len(get_clear_links(hrefs))
+
                 count += 1
 
             hrefs_1.append(hrefs)
