@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>Tous les chemins mènent à la philosophie</title>
+
+  </head>
+  <body>
+    <br>
+    <a href="/">
+      <img src = "/static/wikipedia_logo.png" width="300">
+    </a>
+    <br>
+    <i style="font-family: 'Times New Roman'"> Tous les chemins mènent à la philosophie</i>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    {% block body %}
+      {# Début du bloc "body", dont vous devez modifier le contenu #}
+      <p>{{ message }}</p>
+
+      <p style="font-size: 1.5em"> Jouez manuellement, ou lancez l'algorithme : </p>
+      <form action="/newgame" method="post">
+        <!-- contenu du formulaire ici --> 
+        
+        <input type="text" id="bar" name="start" placeholder="Rentrez votre mot de départ !"></input>
+
+        <br>
+        <input type="submit" name="start" value="Manuel"> 
+        <input type="submit" name="start_auto" value="Automatique">
+
+      </form>
+      <br>
+
+      {# Fin du bloc "body" #}
+    {% endblock %}
+
+    <br>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="{{ category }}">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form action="/tuto" >
+      <input class="but" type="submit" action="/tuto" value="Règles du jeu">
+    </form>
+    <br>
+    <form action="/histo">
+      <input class="but" type="submit" value="Historique des scores">
+    </form>
+
+  </body>
+</html>

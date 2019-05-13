@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+
+{% block body %}
+	<div class="row">
+		<div class="column" id="left-col">
+			<h1 style="font-size: 3.5em"> {{title}} </h1>
+		</div>
+    	<div class="column" id="right-col">
+    		<p> Vers quelle page souhaitez-vous être redirigé ? </p>
+			<form action="/move" type='hidden' method="post" id="myform">
+		
+				{% for item in hrefs %}
+					{% if loop.first %}
+
+						<input type="radio" type='hidden' name="destination" value="{{item}}" checked>
+						<label for="{{item}}">{{item}}</label><br> 
+					{% else %}
+						<input type="radio" type='hidden' name="destination" value="{{item}}">
+						<label for="{{item}}">{{item}}</label><br> 
+					{% endif %}
+
+				{% endfor %}
+				<br>
+
+			</form>
+		</div>
+	</div>
+<input type="submit" form="myform" name="sub"> 
+
+<br>
+<br>
+
+<hr>
+
+<p> Votre score actuel est : 
+	<p style="font-size: 3em">
+		<strong> 
+			{{ session['score'] - 1}} 
+		</strong>
+	</p> 
+</p>
+
+{% endblock %}
