@@ -59,7 +59,8 @@ def game() :
         
     else :
         session['score'] += 1
-        return render_template('game.html', title=session['title'], hrefs=session['hrefs'] )
+        session['article'] = session['title']
+        return render_template('game.html', title=session['article'], hrefs=session['hrefs'] )
 
 @app.route('/autogame', methods=['GET'])
 def autogame() :
