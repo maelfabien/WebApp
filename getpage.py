@@ -105,7 +105,7 @@ def randomSearch(page):
             
             ind = 0
             
-            if len(hrefs_1) > 4 and hrefs_1[-1] == hrefs_1[-3]:
+            if len(hrefs_1) > 6 and hrefs_1[-1] == hrefs_1[-3] and hrefs_1[-5] == hrefs_1[-3] :
                 
                 ind = np.random.randint(ind_len)
         
